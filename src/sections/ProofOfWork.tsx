@@ -22,73 +22,73 @@ export function ProofOfWork() {
         </FadeInView>
 
         {/* Right Column: Content */}
-        <div className="w-full lg:col-span-2">
+        <div className="w-full lg:col-span-2 space-y-6">
           {/* Stat cards: 2-col */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
-        {proofOfWork.highlights.map((h, idx) => (
-          <FadeInView key={h.label} delay={idx * 0.07}>
-            <GlassCard className="p-5">
-              <div className="text-2xl font-extrabold gradient-text leading-none mb-1">
-                <CountUp
-                  target={parseFloat(h.value.replace(/[^0-9.]/g, ''))}
-                  suffix={h.value.replace(/[0-9.]/g, '')}
-                />
+          <div className="grid sm:grid-cols-2 gap-4">
+            {proofOfWork.highlights.map((h, idx) => (
+              <FadeInView key={h.label} delay={idx * 0.07}>
+                <GlassCard className="p-5">
+                  <div className="text-2xl font-extrabold gradient-text leading-none mb-1">
+                    <CountUp
+                      target={parseFloat(h.value.replace(/[^0-9.]/g, ''))}
+                      suffix={h.value.replace(/[0-9.]/g, '')}
+                    />
+                  </div>
+                  <div className="text-white font-semibold text-sm mb-1">{h.label}</div>
+                  <div className="text-caption">{h.detail}</div>
+                </GlassCard>
+              </FadeInView>
+            ))}
+          </div>
+
+          {/* Contribution heatmap */}
+          <FadeInView delay={0.2}>
+            <GlassCard className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-caption font-mono">contribution activity</p>
+                <a
+                  href={profile.socials.github}
+                  target="_blank" rel="noopener noreferrer"
+                  className="text-brand-400 text-xs hover:underline font-mono"
+                >
+                  view on GitHub →
+                </a>
               </div>
-              <div className="text-white font-semibold text-sm mb-1">{h.label}</div>
-              <div className="text-caption">{h.detail}</div>
+
+              <div className="flex gap-1 overflow-x-auto pb-2">
+                {proofOfWork.contributions.map(({ week, count }) => {
+                  const intensity = count / maxCount;
+                  return (
+                    <div key={week} className="flex flex-col gap-1">
+                      {[0, 1, 2, 3, 4, 5, 6].map(day => (
+                        <div
+                          key={day}
+                          className="heatmap-cell"
+                          style={{
+                            backgroundColor: `rgba(0,229,173,${day === 0
+                              ? intensity * 0.5
+                              : intensity * (0.5 + Math.random() * 0.5)
+                            })`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Legend */}
+              <div className="flex items-center gap-2 mt-3">
+                <span className="text-caption">Less</span>
+                {[0.1, 0.3, 0.5, 0.7, 0.9].map(o => (
+                  <div key={o} className="heatmap-cell" style={{ backgroundColor: `rgba(0,229,173,${o})` }} />
+                ))}
+                <span className="text-caption">More</span>
+              </div>
             </GlassCard>
           </FadeInView>
-        ))}
+        </div>
       </div>
-
-      {/* Contribution heatmap */}
-      <FadeInView delay={0.2}>
-        <GlassCard className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <p className="text-caption font-mono">contribution activity</p>
-            <a
-              href={profile.socials.github}
-              target="_blank" rel="noopener noreferrer"
-              className="text-brand-400 text-xs hover:underline font-mono"
-            >
-              view on GitHub →
-            </a>
-          </div>
-
-          <div className="flex gap-1 overflow-x-auto pb-2">
-            {proofOfWork.contributions.map(({ week, count }) => {
-              const intensity = count / maxCount;
-              return (
-                <div key={week} className="flex flex-col gap-1">
-                  {[0, 1, 2, 3, 4, 5, 6].map(day => (
-                    <div
-                      key={day}
-                      className="heatmap-cell"
-                      style={{
-                        backgroundColor: `rgba(0,229,173,${day === 0
-                          ? intensity * 0.5
-                          : intensity * (0.5 + Math.random() * 0.5)
-                        })`,
-                      }}
-                    />
-                  ))}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Legend */}
-          <div className="flex items-center gap-2 mt-3">
-            <span className="text-caption">Less</span>
-            {[0.1, 0.3, 0.5, 0.7, 0.9].map(o => (
-              <div key={o} className="heatmap-cell" style={{ backgroundColor: `rgba(0,229,173,${o})` }} />
-            ))}
-            <span className="text-caption">More</span>
-          </div>
-        </GlassCard>
-      </FadeInView>
-    </div>
-  </div>
-</SectionWrapper>
+    </SectionWrapper>
   );
 }

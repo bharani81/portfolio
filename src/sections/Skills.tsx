@@ -38,71 +38,72 @@ export function Skills() {
         </FadeInView>
 
         {/* Right Column: Skills */}
-        <div className="w-full lg:col-span-2">
+        <div className="w-full lg:col-span-2 space-y-6">
           {/* Category tabs */}
-          <div className="flex flex-wrap gap-2 mb-10">
-        {skills.map(cat => {
-          const Icon = ICON_MAP[cat.icon] ?? Terminal;
-          const color = COLOR_MAP[cat.color as ColorKey] ?? COLOR_MAP.brand;
-          const isActive = cat.category === activeCategory;
-          return (
-            <button
-              key={cat.category}
-              onClick={() => setActiveCategory(cat.category)}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border"
-              style={isActive
-                ? { background: color.bg, borderColor: color.border, color: color.text }
-                : { background: 'transparent', borderColor: 'rgba(255,255,255,0.08)', color: '#64748b' }
-              }
-            >
-              <Icon size={13} />
-              {cat.category}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Active category */}
-      {active && (
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <p className="text-body text-sm mb-6 prose-default">{active.description}</p>
-
-          {/* 2-col skill grid */}
-          <div className="grid sm:grid-cols-2 gap-3">
-            {active.items.map((item, i) => {
-              const color = COLOR_MAP[active.color as ColorKey] ?? COLOR_MAP.brand;
+          <div className="flex flex-wrap gap-2">
+            {skills.map(cat => {
+              const Icon = ICON_MAP[cat.icon] ?? Terminal;
+              const color = COLOR_MAP[cat.color as ColorKey] ?? COLOR_MAP.brand;
+              const isActive = cat.category === activeCategory;
               return (
-                <FadeInView key={item.name} delay={i * 0.04}>
-                  <GlassCard className="p-4">
-                    <div className="flex items-center justify-between mb-2.5">
-                      <span className="text-white font-semibold text-sm">{item.name}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-caption font-mono">{item.years}y</span>
-                        <span className="text-xs font-bold" style={{ color: color.text }}>{item.level}%</span>
-                      </div>
-                    </div>
-                    {/* Progress bar */}
-                    <div className="h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ background: `linear-gradient(90deg, ${color.text}, ${color.text}80)` }}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${item.level}%` }}
-                        transition={{ duration: 0.7, delay: i * 0.04, ease: 'easeOut' }}
-                      />
-                    </div>
-                  </GlassCard>
-                </FadeInView>
+                <button
+                  key={cat.category}
+                  onClick={() => setActiveCategory(cat.category)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border"
+                  style={isActive
+                    ? { background: color.bg, borderColor: color.border, color: color.text }
+                    : { background: 'transparent', borderColor: 'rgba(255,255,255,0.08)', color: '#64748b' }
+                  }
+                >
+                  <Icon size={13} />
+                  {cat.category}
+                </button>
               );
             })}
           </div>
-        </motion.div>
-      )}
+
+          {/* Active category */}
+          {active && (
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="space-y-6"
+            >
+              <p className="text-body text-sm prose-default">{active.description}</p>
+
+              {/* 2-col skill grid */}
+              <div className="grid sm:grid-cols-2 gap-3">
+                {active.items.map((item, i) => {
+                  const color = COLOR_MAP[active.color as ColorKey] ?? COLOR_MAP.brand;
+                  return (
+                    <FadeInView key={item.name} delay={i * 0.04}>
+                      <GlassCard className="p-4">
+                        <div className="flex items-center justify-between mb-2.5">
+                          <span className="text-white font-semibold text-sm">{item.name}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-caption font-mono">{item.years}y</span>
+                            <span className="text-xs font-bold" style={{ color: color.text }}>{item.level}%</span>
+                          </div>
+                        </div>
+                        {/* Progress bar */}
+                        <div className="h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{ background: `linear-gradient(90deg, ${color.text}, ${color.text}80)` }}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${item.level}%` }}
+                            transition={{ duration: 0.7, delay: i * 0.04, ease: 'easeOut' }}
+                          />
+                        </div>
+                      </GlassCard>
+                    </FadeInView>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </SectionWrapper>

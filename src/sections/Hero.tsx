@@ -41,12 +41,12 @@ export function Hero() {
         style={{ background: 'radial-gradient(ellipse 70% 60% at 65% 40%, rgba(0,229,173,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div className="relative w-full max-w-6xl mx-auto px-6 pt-28 pb-16">
         {/* 2-column grid: text left, canvas right */}
-        <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
           {/* ── Left: Text ── */}
-          <div className="flex flex-col">
+          <div className="max-w-xl space-y-6 text-left">
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
-              className="text-hero gradient-text mb-4"
+              className="text-hero gradient-text"
             >
               {profile.name}
             </motion.h1>
@@ -69,7 +69,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.32 }}
-              className="text-lg sm:text-xl text-slate-400 font-medium mb-4 prose-narrow"
+              className="text-lg sm:text-xl text-slate-400 font-medium prose-narrow"
             >
               {profile.tagline}
             </motion.p>
@@ -78,7 +78,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.42 }}
-              className="text-body mb-5 prose-default"
+              className="text-body prose-default"
             >
               {profile.bio}
             </motion.p>
@@ -87,7 +87,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
-              className="font-mono text-brand-400 text-sm mb-8 italic"
+              className="font-mono text-brand-400 text-sm italic"
             >
               "I build the systems your apps depend on."
             </motion.p>
@@ -97,7 +97,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.58 }}
-              className="flex flex-wrap gap-3 mb-6"
+              className="flex flex-wrap gap-3"
             >
               <a
                 href={profile.resumeUrl}
@@ -138,7 +138,7 @@ export function Hero() {
           </div>
 
           {/* ── Right: 3D Canvas ── */}
-          <div className="relative h-[400px] lg:h-[520px] order-first lg:order-last">
+          <div className="relative h-[320px] lg:h-[400px] order-first lg:order-last">
             {show3D ? (
               <ErrorBoundary
                 fallback={

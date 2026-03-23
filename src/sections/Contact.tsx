@@ -81,47 +81,48 @@ export function Contact() {
         </FadeInView>
 
         {/* Right Column: Contact Links & Resume */}
-        <div className="w-full lg:col-span-2">
-          <div className="max-w-xl space-y-3 mb-8">
-        <FadeInView delay={0.08}>
-          <ContactRow
-            icon={<Mail size={18} className="text-brand-400" />}
-            iconBg="rgba(0,229,173,0.1)"
-            label="email"
-            value={profile.email}
-            href={`mailto:${profile.email}`}
-            cta="Say Hello →"
-            onClick={() => trackEvent('contact_email')}
-          />
-        </FadeInView>
+        <div className="w-full lg:col-span-2 space-y-6">
+          {/* Contact rows */}
+          <div className="space-y-3">
+            <FadeInView delay={0.08}>
+              <ContactRow
+                icon={<Mail size={18} className="text-brand-400" />}
+                iconBg="rgba(0,229,173,0.1)"
+                label="email"
+                value={profile.email}
+                href={`mailto:${profile.email}`}
+                cta="Say Hello →"
+                onClick={() => trackEvent('contact_email')}
+              />
+            </FadeInView>
 
-        <FadeInView delay={0.13}>
-          <ContactRow
-            icon={<span className="text-brand-400"><GithubIcon /></span>}
-            iconBg="rgba(0,229,173,0.1)"
-            label="github"
-            value={profile.socials.github.replace('https://', '')}
-            href={profile.socials.github}
-            cta="View Code →"
-            external
-            onClick={() => trackEvent('social_click', { platform: 'github', source: 'contact' })}
-          />
-        </FadeInView>
+            <FadeInView delay={0.13}>
+              <ContactRow
+                icon={<span className="text-brand-400"><GithubIcon /></span>}
+                iconBg="rgba(0,229,173,0.1)"
+                label="github"
+                value={profile.socials.github.replace('https://', '')}
+                href={profile.socials.github}
+                cta="View Code →"
+                external
+                onClick={() => trackEvent('social_click', { platform: 'github', source: 'contact' })}
+              />
+            </FadeInView>
 
-        <FadeInView delay={0.18}>
-          <ContactRow
-            icon={<span className="text-purple-400"><LinkedinIcon /></span>}
-            iconBg="rgba(139,92,246,0.1)"
-            label="linkedin"
-            value={profile.socials.linkedin.replace('https://', '')}
-            href={profile.socials.linkedin}
-            cta="Connect →"
-            external
-            ctaColor="purple"
-            onClick={() => trackEvent('social_click', { platform: 'linkedin', source: 'contact' })}
-          />
-        </FadeInView>
-      </div>
+            <FadeInView delay={0.18}>
+              <ContactRow
+                icon={<span className="text-purple-400"><LinkedinIcon /></span>}
+                iconBg="rgba(139,92,246,0.1)"
+                label="linkedin"
+                value={profile.socials.linkedin.replace('https://', '')}
+                href={profile.socials.linkedin}
+                cta="Connect →"
+                external
+                ctaColor="purple"
+                onClick={() => trackEvent('social_click', { platform: 'linkedin', source: 'contact' })}
+              />
+            </FadeInView>
+          </div>
 
           {/* Resume download */}
           <FadeInView delay={0.23}>
