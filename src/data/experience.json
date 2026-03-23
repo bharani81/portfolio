@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "company": "Billionhearts Software Technologies",
+    "role": "Software Development Engineer",
+    "period": "Nov 2024 – Present",
+    "location": "Bangalore, India",
+    "type": "Full-time",
+    "highlights": [
+      "Built production-grade Golang backend for PicSee, a consumer photo-sharing app serving real users at scale",
+      "Designed Redis + DynamoDB architecture achieving sub-millisecond p99 API latency under concurrent load",
+      "Architected FCM push notification pipeline with targeting logic, improving 30-day user retention by 25%",
+      "Delivered transactional email system via ZeptoMail with templated campaigns, boosting email CTR by 30%",
+      "Built 100+ Metabase analytics dashboards powered by AWS Athena for product and business decision-making",
+      "Managed AWS ECS services, Lambda functions, and SQS queues with CloudWatch alerting and log insights"
+    ],
+    "impact": [
+      { "metric": "Retention Boost",     "value": "+25%",  "icon": "users",      "color": "brand" },
+      { "metric": "Email CTR",            "value": "+30%",  "icon": "mail",       "color": "purple" },
+      { "metric": "Metabase Dashboards",  "value": "100+",  "icon": "bar-chart",  "color": "amber" },
+      { "metric": "API Latency",          "value": "<1ms",  "icon": "zap",        "color": "brand" }
+    ],
+    "tech": ["Golang", "AWS ECS", "Lambda", "SQS", "DynamoDB", "Redis", "CloudWatch", "Athena", "FCM", "ZeptoMail"]
+  },
+  {
+    "id": 2,
+    "company": "Shopup",
+    "role": "Software Development Engineer (Intern)",
+    "period": "Dec 2023 – Jun 2024",
+    "location": "Remote",
+    "type": "Internship",
+    "highlights": [
+      "Migrated entire E2E test suite from Katalon to Cypress, cutting CI test execution time by 92%",
+      "Built 15+ REST APIs using the Gin framework backed by PostgreSQL for core business workflows",
+      "Set up production CI/CD pipelines with GitHub Actions, Docker, Helm charts on Google Kubernetes Engine",
+      "Collaborated across frontend and backend teams in fast-paced agile sprints"
+    ],
+    "impact": [
+      { "metric": "Test Speed",    "value": "92% faster", "icon": "zap",  "color": "brand" },
+      { "metric": "APIs Built",    "value": "15+",        "icon": "code", "color": "purple" }
+    ],
+    "tech": ["Golang", "Gin", "PostgreSQL", "Cypress", "Docker", "Helm", "GKE", "GitHub Actions"]
+  }
+]

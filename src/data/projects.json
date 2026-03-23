@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Q&A Forum",
+    "tagline": "Full-stack discussion platform with CI/CD from day one",
+    "description": "A production-ready Q&A forum built with Golang, PostgreSQL, and React. Designed for scalability with a focus on clean API design and a smooth developer experience.",
+    "tech": ["Golang", "PostgreSQL", "React", "Docker", "GitHub Actions"],
+    "github": "https://github.com/bharanidharan-s/qa-forum",
+    "live": null,
+    "featured": true,
+    "category": "Full-Stack",
+    "caseStudy": {
+      "problem": "Needed a real-world project that demonstrated end-to-end engineering — from API design through deployment — not just a CRUD app.",
+      "solution": "Built a full Q&A platform with Golang REST API, PostgreSQL relational schema, React frontend, and automated CI/CD pipeline via GitHub Actions and Docker.",
+      "challenges": [
+        {
+          "title": "Concurrent vote updates",
+          "how": "Used PostgreSQL row-level locking with UPDATE ... RETURNING to safely handle concurrent upvotes without race conditions"
+        },
+        {
+          "title": "Frontend-backend decoupling",
+          "how": "Designed a versioned REST API (v1) from the start, allowing independent frontend deployment"
+        }
+      ],
+      "architecture": [
+        "React SPA → REST API (Gin/Golang) → PostgreSQL",
+        "Docker Compose for local dev parity",
+        "GitHub Actions: test → build → push image → deploy"
+      ],
+      "scalingDecisions": [
+        "Connection pooling via pgx for efficient DB connections under load",
+        "Stateless API design — horizontally scalable behind a load balancer",
+        "Docker multi-stage build keeps image under 20MB"
+      ],
+      "futureImprovements": [
+        "Add Redis L2 cache for hot questions",
+        "Real-time answer notifications via WebSockets",
+        "Full-text search with pgvector or Elasticsearch"
+      ],
+      "impact": "Demonstrates ability to own the full engineering lifecycle: design, implement, test, containerise, and deploy."
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "name": "Bharanidharan",
+  "tagline": "Backend Engineer · Golang Specialist",
+  "bio": "I design and build the backend systems that power real products — from sub-millisecond APIs to async event pipelines on AWS. I care deeply about performance, reliability, and systems that scale.",
+  "location": "Bangalore, India",
+  "email": "bharanidharansrinivasan2@gmail.com",
+  "resumeUrl": "/resume.pdf",
+  "education": {
+    "degree": "BE Computer Science & Engineering",
+    "college": "Thiagarajar College of Engineering",
+    "cgpa": "9.59",
+    "year": "2024"
+  },
+  "stats": [
+    { "label": "CGPA", "value": "9.59", "suffix": "" },
+    { "label": "APIs Shipped", "value": "20", "suffix": "+" },
+    { "label": "Production Systems", "value": "3", "suffix": "" },
+    { "label": "Test Speed", "value": "92", "suffix": "% faster" }
+  ],
+  "socials": {
+    "github": "https://github.com/bharanidharan-s",
+    "linkedin": "https://linkedin.com/in/bharanidharan-s"
+  }
+}
