@@ -24,7 +24,6 @@ interface ContactRowProps {
   href: string;
   cta: string;
   external?: boolean;
-  colorClass?: string;
   ctaColor?: string;
   onClick?: () => void;
 }
@@ -36,7 +35,7 @@ function ContactRow({ icon, iconBg, label, value, href, cta, external = false, c
     : 'bg-brand-500/10 text-brand-400 border-brand-400/20 hover:bg-brand-500/20';
 
   return (
-    <GlassCard className="p-5 flex items-center justify-between gap-4 glass-hover">
+    <GlassCard className="p-5 flex items-center justify-between gap-4 glass-hover max-w-lg text-left">
       <div className="flex items-center gap-4 min-w-0">
         <div
           className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
@@ -45,7 +44,7 @@ function ContactRow({ icon, iconBg, label, value, href, cta, external = false, c
           {icon}
         </div>
         <div className="min-w-0">
-          <p className="text-caption font-mono">{label}</p>
+          <p className="text-gray-500 font-mono text-xs">{label}</p>
           <p className="text-white text-sm font-medium truncate">{value}</p>
         </div>
       </div>
@@ -67,82 +66,75 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact">
-      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-        {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
-          <span className="section-label">07 / contact</span>
-          <h2 className="section-title">
-            Let's <br className="hidden lg:block" />
-            <span className="gradient-text">build something.</span>
-          </h2>
-          <p className="section-subtitle">
-            Open to backend engineering roles and interesting problems.
-          </p>
-        </FadeInView>
+      <FadeInView>
+        <div className="mb-8">
+          <span className="text-brand-400 font-mono text-sm block mb-2">07 / contact</span>
+          <h2 className="text-3xl font-semibold text-white">Let's build something.</h2>
+          <p className="text-gray-400 mt-2">Open to backend engineering roles and interesting problems.</p>
+        </div>
+      </FadeInView>
 
-        {/* Right Column: Contact Links & Resume */}
-        <div className="w-full lg:col-span-2 space-y-6">
-          {/* Contact rows */}
-          <div className="space-y-3">
-            <FadeInView delay={0.08}>
-              <ContactRow
-                icon={<Mail size={18} className="text-brand-400" />}
-                iconBg="rgba(0,229,173,0.1)"
-                label="email"
-                value={profile.email}
-                href={`mailto:${profile.email}`}
-                cta="Say Hello →"
-                onClick={() => trackEvent('contact_email')}
-              />
-            </FadeInView>
+      <div className="w-full space-y-6">
+        {/* Contact rows */}
+        <div className="grid md:grid-cols-3 gap-6">
+          <FadeInView delay={0.08}>
+            <ContactRow
+              icon={<Mail size={18} className="text-brand-400" />}
+              iconBg="rgba(0,229,173,0.1)"
+              label="email"
+              value={profile.email}
+              href={`mailto:${profile.email}`}
+              cta="Say Hello →"
+              onClick={() => trackEvent('contact_email')}
+            />
+          </FadeInView>
 
-            <FadeInView delay={0.13}>
-              <ContactRow
-                icon={<span className="text-brand-400"><GithubIcon /></span>}
-                iconBg="rgba(0,229,173,0.1)"
-                label="github"
-                value={profile.socials.github.replace('https://', '')}
-                href={profile.socials.github}
-                cta="View Code →"
-                external
-                onClick={() => trackEvent('social_click', { platform: 'github', source: 'contact' })}
-              />
-            </FadeInView>
+          <FadeInView delay={0.13}>
+            <ContactRow
+              icon={<span className="text-brand-400"><GithubIcon /></span>}
+              iconBg="rgba(0,229,173,0.1)"
+              label="github"
+              value={profile.socials.github.replace('https://', '')}
+              href={profile.socials.github}
+              cta="View Code →"
+              external
+              onClick={() => trackEvent('social_click', { platform: 'github', source: 'contact' })}
+            />
+          </FadeInView>
 
-            <FadeInView delay={0.18}>
-              <ContactRow
-                icon={<span className="text-purple-400"><LinkedinIcon /></span>}
-                iconBg="rgba(139,92,246,0.1)"
-                label="linkedin"
-                value={profile.socials.linkedin.replace('https://', '')}
-                href={profile.socials.linkedin}
-                cta="Connect →"
-                external
-                ctaColor="purple"
-                onClick={() => trackEvent('social_click', { platform: 'linkedin', source: 'contact' })}
-              />
-            </FadeInView>
-          </div>
-
-          {/* Resume download */}
-          <FadeInView delay={0.23}>
-            <a
-              href={profile.resumeUrl}
-              download
-              onClick={() => trackEvent('resume_download', { source: 'contact' })}
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-brand-500 to-purple-500 text-white hover:opacity-90 transition-all hover:shadow-glow-md"
-            >
-              <Download size={15} />
-              Download Resume (PDF)
-            </a>
+          <FadeInView delay={0.18}>
+            <ContactRow
+              icon={<span className="text-purple-400"><LinkedinIcon /></span>}
+              iconBg="rgba(139,92,246,0.1)"
+              label="linkedin"
+              value={profile.socials.linkedin.replace('https://', '')}
+              href={profile.socials.linkedin}
+              cta="Connect →"
+              external
+              ctaColor="purple"
+              onClick={() => trackEvent('social_click', { platform: 'linkedin', source: 'contact' })}
+            />
           </FadeInView>
         </div>
+
+        {/* Resume download */}
+        <FadeInView delay={0.23}>
+          <a
+            href={profile.resumeUrl}
+            download
+            onClick={() => trackEvent('resume_download', { source: 'contact' })}
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-brand-500 to-purple-500 text-white hover:opacity-90 transition-all hover:shadow-glow-md"
+          >
+            <Download size={15} />
+            Download Resume (PDF)
+          </a>
+        </FadeInView>
       </div>
 
       {/* Footer */}
       <FadeInView delay={0.3}>
         <div className="mt-20 pt-8 border-t border-white/5">
-          <p className="text-caption font-mono">
+          <p className="text-xs font-mono text-gray-500">
             built with React · Three.js · Framer Motion · Tailwind · deployed on Vercel
           </p>
         </div>

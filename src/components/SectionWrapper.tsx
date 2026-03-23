@@ -12,8 +12,8 @@ interface SectionWrapperProps {
  */
 export function SectionWrapper({ id, children, className = '' }: SectionWrapperProps) {
   return (
-    <section id={id} className={`relative py-24 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <div className="max-w-6xl mx-auto">
+    <section id={id} className={`relative py-20 ${className}`}>
+      <div className="w-full max-w-6xl mx-auto px-6">
         {children}
       </div>
     </section>

@@ -33,7 +33,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden py-20">
       {/* Backgrounds */}
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
       <div
@@ -41,17 +41,16 @@ export function Hero() {
         style={{ background: 'radial-gradient(ellipse 70% 60% at 65% 40%, rgba(0,229,173,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="relative w-full max-w-6xl mx-auto px-6 pt-28 pb-16">
-        {/* 2-column grid: text left, canvas right */}
+      <div className="w-full max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-
+          
           {/* ── Left: Text ── */}
           <div className="max-w-xl space-y-6 text-left">
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="section-label"
+              className="text-brand-400 font-mono text-sm block"
             >
               Backend Engineer · Golang Specialist
             </motion.span>
@@ -60,7 +59,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
-              className="text-hero gradient-text"
+              className="text-5xl md:text-6xl font-bold text-white tracking-tight"
             >
               {profile.name}
             </motion.h1>
@@ -69,7 +68,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.32 }}
-              className="text-lg sm:text-xl text-slate-400 font-medium prose-narrow"
+              className="text-gray-400 max-w-lg text-lg"
             >
               {profile.tagline}
             </motion.p>
@@ -78,7 +77,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.42 }}
-              className="text-body prose-default"
+              className="text-gray-400 max-w-lg"
             >
               {profile.bio}
             </motion.p>
@@ -138,7 +137,7 @@ export function Hero() {
           </div>
 
           {/* ── Right: 3D Canvas ── */}
-          <div className="relative h-[320px] lg:h-[400px] order-first lg:order-last">
+          <div className="relative h-[320px] lg:h-[400px] w-full order-first lg:order-last">
             {show3D ? (
               <ErrorBoundary
                 fallback={
@@ -158,15 +157,15 @@ export function Hero() {
                 </Suspense>
               </ErrorBoundary>
             ) : (
-              <div className="h-full glass rounded-2xl flex flex-col items-center justify-center gap-5 p-8 relative overflow-hidden">
+              <div className="h-full glass rounded-xl border border-white/10 flex flex-col items-center justify-center gap-5 p-8 relative overflow-hidden text-center">
                 <div
                   className="absolute inset-0 opacity-20"
                   style={{ background: 'radial-gradient(ellipse at center, rgba(0,229,173,0.3) 0%, transparent 70%)' }}
                 />
                 <div className="text-5xl">⚡</div>
                 <div>
-                  <p className="text-brand-400 font-mono text-sm text-center">Backend Systems</p>
-                  <p className="text-slate-500 text-xs mt-1 text-center">APIs · Queues · Microservices</p>
+                  <p className="text-brand-400 font-mono text-sm">Backend Systems</p>
+                  <p className="text-gray-400 text-xs mt-1">APIs · Queues · Microservices</p>
                 </div>
                 <div className="flex gap-2 flex-wrap justify-center">
                   {['Golang', 'AWS', 'Redis', 'PostgreSQL'].map(t => (

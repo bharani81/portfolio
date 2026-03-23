@@ -26,28 +26,24 @@ export function Projects() {
 
   return (
     <SectionWrapper id="projects">
-      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-        {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
-          <span className="section-label">04 / projects</span>
-          <h2 className="section-title">
-            Proof: code that <br className="hidden lg:block" />
-            <span className="gradient-text">ships and scales.</span>
-          </h2>
-          <p className="section-subtitle">Click any card to read the full case study</p>
-        </FadeInView>
+      <FadeInView>
+        <div className="mb-8">
+          <span className="text-brand-400 font-mono text-sm block mb-2">04 / projects</span>
+          <h2 className="text-3xl font-semibold text-white">Proof: code that ships and scales.</h2>
+          <p className="text-gray-400 mt-2">Click any card to read the full case study</p>
+        </div>
+      </FadeInView>
 
-        {/* Right Column: Grid for project cards */}
-        <div className="grid md:grid-cols-2 gap-6 w-full lg:col-span-2">
-          {projects.map((project, idx) => (
-            <FadeInView 
-              key={project.id} 
-              delay={idx * 0.1}
-              className="flex"
-            >
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        {projects.map((project, idx) => (
+          <FadeInView 
+            key={project.id} 
+            delay={idx * 0.1}
+            className="flex"
+          >
             {/* Card wrapper to equalize heights */}
             <GlassCard 
-              className="p-5 h-full flex flex-col group cursor-pointer"
+              className="p-5 h-full flex flex-col group cursor-pointer text-left w-full"
               onClick={() => openModal(project)}
             >
               {/* Top */}
@@ -56,7 +52,7 @@ export function Projects() {
                   {project.featured && (
                     <span className="text-amber-400 text-xs font-mono block mb-0.5">★ featured</span>
                   )}
-                  <h3 className="text-h3 text-white group-hover:text-brand-400 transition-colors leading-snug">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-brand-400 transition-colors leading-snug">
                     {project.title}
                   </h3>
                 </div>
@@ -64,7 +60,7 @@ export function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-body text-sm flex-1 mb-4">{project.description}</p>
+              <p className="text-gray-400 text-sm flex-1 mb-4">{project.description}</p>
 
               {/* Tech stack */}
               <div className="flex flex-wrap gap-1.5 mb-4">
@@ -79,7 +75,7 @@ export function Projects() {
                       href={project.github}
                       target="_blank" rel="noopener noreferrer"
                       onClick={e => { e.stopPropagation(); trackEvent('github_click', { project: project.title }); }}
-                      className="text-slate-500 hover:text-brand-400 transition-colors"
+                      className="text-gray-500 hover:text-brand-400 transition-colors"
                     >
                       <GithubIcon />
                     </a>
@@ -89,20 +85,19 @@ export function Projects() {
                       href={project.live}
                       target="_blank" rel="noopener noreferrer"
                       onClick={e => e.stopPropagation()}
-                      className="text-slate-500 hover:text-brand-400 transition-colors"
+                      className="text-gray-500 hover:text-brand-400 transition-colors"
                     >
                       <ExternalLink size={14} />
                     </a>
                   )}
                 </div>
-                <span className="text-caption font-mono flex items-center gap-1 group-hover:text-brand-400 transition-colors">
+                <span className="text-xs font-mono flex items-center gap-1 text-gray-500 group-hover:text-brand-400 transition-colors">
                   case study <ArrowRight size={10} />
                 </span>
               </div>
             </GlassCard>
-            </FadeInView>
-          ))}
-        </div>
+          </FadeInView>
+        ))}
       </div>
 
       <AnimatePresence>
