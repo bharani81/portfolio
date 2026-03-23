@@ -24,9 +24,9 @@ export function Skills() {
 
   return (
     <SectionWrapper id="skills">
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">05 / skills</span>
           <h2 className="section-title">
             The tools — organized as <br className="hidden lg:block" />
@@ -38,7 +38,7 @@ export function Skills() {
         </FadeInView>
 
         {/* Right Column: Skills */}
-        <div className="w-full">
+        <div className="w-full lg:col-span-2">
           {/* Category tabs */}
           <div className="flex flex-wrap gap-2 mb-10">
         {skills.map(cat => {

@@ -26,9 +26,9 @@ export function Projects() {
 
   return (
     <SectionWrapper id="projects">
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">04 / projects</span>
           <h2 className="section-title">
             Proof: code that <br className="hidden lg:block" />
@@ -38,7 +38,7 @@ export function Projects() {
         </FadeInView>
 
         {/* Right Column: Grid for project cards */}
-        <div className="grid md:grid-cols-2 gap-6 w-full">
+        <div className="grid md:grid-cols-2 gap-6 w-full lg:col-span-2">
           {projects.map((project, idx) => (
             <FadeInView 
               key={project.id} 

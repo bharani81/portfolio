@@ -17,9 +17,9 @@ export function Experience() {
         style={{ background: 'radial-gradient(ellipse 60% 50% at 20% 50%, rgba(139,92,246,0.04) 0%, transparent 70%)' }}
       />
 
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">02 / experience</span>
           <h2 className="section-title">
             From intern to <br className="hidden lg:block" />
@@ -29,7 +29,7 @@ export function Experience() {
         </FadeInView>
 
         {/* Right Column: Timeline */}
-        <div className="relative w-full">
+        <div className="relative w-full lg:col-span-2">
         {/* Vertical line — left-aligned on all screens */}
         <div
           className="absolute left-4 top-0 bottom-0 w-px"

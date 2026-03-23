@@ -67,9 +67,9 @@ export function Contact() {
 
   return (
     <SectionWrapper id="contact">
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">07 / contact</span>
           <h2 className="section-title">
             Let's <br className="hidden lg:block" />
@@ -81,7 +81,7 @@ export function Contact() {
         </FadeInView>
 
         {/* Right Column: Contact Links & Resume */}
-        <div className="w-full">
+        <div className="w-full lg:col-span-2">
           <div className="max-w-xl space-y-3 mb-8">
         <FadeInView delay={0.08}>
           <ContactRow

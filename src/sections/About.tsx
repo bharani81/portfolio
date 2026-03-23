@@ -22,9 +22,9 @@ export function About() {
 
   return (
     <SectionWrapper id="about">
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">01 / about</span>
           <h2 className="section-title">
             CS foundation → <br className="hidden lg:block" />
@@ -34,7 +34,7 @@ export function About() {
         </FadeInView>
 
         {/* Right Column: biological content */}
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-start lg:col-span-2">
           {/* Bio text */}
           <FadeInView delay={0.1} className="prose-default space-y-6">
             <p>

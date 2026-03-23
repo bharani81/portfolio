@@ -10,9 +10,9 @@ export function ProofOfWork() {
 
   return (
     <SectionWrapper id="proof">
-      <div className="grid lg:grid-cols-[1fr,2fr] gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 items-start">
         {/* Left Column: sticky section title */}
-        <FadeInView className="lg:sticky lg:top-32">
+        <FadeInView className="lg:sticky lg:top-32 lg:col-span-1">
           <span className="section-label">06 / proof</span>
           <h2 className="section-title">
             Don't take my word — <br className="hidden lg:block" />
@@ -22,7 +22,7 @@ export function ProofOfWork() {
         </FadeInView>
 
         {/* Right Column: Content */}
-        <div className="w-full">
+        <div className="w-full lg:col-span-2">
           {/* Stat cards: 2-col */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
         {proofOfWork.highlights.map((h, idx) => (
