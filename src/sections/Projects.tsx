@@ -27,32 +27,31 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <FadeInView>
-        <div className="mb-8">
-          <span className="text-brand-400 font-mono text-sm block mb-2">04 / projects</span>
-          <h2 className="text-3xl font-semibold text-white">Proof: code that ships and scales.</h2>
-          <p className="text-gray-400 mt-2">Click any card to read the full case study</p>
+        <div className="mb-12">
+          <span className="section-label">04 / projects</span>
+          <h2 className="section-title text-white">Proof: code that ships and scales.</h2>
+          <p className="section-subtitle">Click any card to read the full case study</p>
         </div>
       </FadeInView>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         {projects.map((project, idx) => (
-          <FadeInView 
-            key={project.id} 
-            delay={idx * 0.1}
+          <FadeInView
+            key={project.id}
+            delay={idx * 0.08}
             className="flex"
           >
-            {/* Card wrapper to equalize heights */}
-            <GlassCard 
-              className="p-5 h-full flex flex-col group cursor-pointer text-left w-full"
+            <GlassCard
+              className="p-6 flex flex-col group cursor-pointer w-full"
               onClick={() => openModal(project)}
             >
               {/* Top */}
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div className="min-w-0">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="min-w-0 flex-1">
                   {project.featured && (
-                    <span className="text-amber-400 text-xs font-mono block mb-0.5">★ featured</span>
+                    <span className="text-amber-400 text-xs font-mono block mb-1">★ featured</span>
                   )}
-                  <h3 className="text-lg font-semibold text-white group-hover:text-brand-400 transition-colors leading-snug">
+                  <h3 className="text-h3 text-white group-hover:text-brand-400 transition-colors leading-snug">
                     {project.title}
                   </h3>
                 </div>
@@ -60,7 +59,7 @@ export function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-gray-400 text-sm flex-1 mb-4">{project.description}</p>
+              <p className="text-body text-sm flex-1 mb-4">{project.description}</p>
 
               {/* Tech stack */}
               <div className="flex flex-wrap gap-1.5 mb-4">
@@ -68,14 +67,15 @@ export function Projects() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                <div className="flex gap-3">
+              <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-auto">
+                <div className="flex gap-3 items-center">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank" rel="noopener noreferrer"
                       onClick={e => { e.stopPropagation(); trackEvent('github_click', { project: project.title }); }}
                       className="text-gray-500 hover:text-brand-400 transition-colors"
+                      aria-label="GitHub"
                     >
                       <GithubIcon />
                     </a>
@@ -86,6 +86,7 @@ export function Projects() {
                       target="_blank" rel="noopener noreferrer"
                       onClick={e => e.stopPropagation()}
                       className="text-gray-500 hover:text-brand-400 transition-colors"
+                      aria-label="Live demo"
                     >
                       <ExternalLink size={14} />
                     </a>

@@ -38,7 +38,7 @@ export function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="layout-container">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <button onClick={() => scrollTo('#hero')} className="font-mono font-bold text-sm gradient-text">

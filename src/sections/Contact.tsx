@@ -16,7 +16,7 @@ const LinkedinIcon = () => (
   </svg>
 );
 
-interface ContactRowProps {
+interface ContactCardProps {
   icon: React.ReactNode;
   iconBg: string;
   label: string;
@@ -24,39 +24,42 @@ interface ContactRowProps {
   href: string;
   cta: string;
   external?: boolean;
-  ctaColor?: string;
+  ctaColor?: 'brand' | 'purple';
   onClick?: () => void;
 }
 
-function ContactRow({ icon, iconBg, label, value, href, cta, external = false, ctaColor = 'brand', onClick }: ContactRowProps) {
-  const isAmber = ctaColor === 'purple';
-  const btnClass = isAmber
+function ContactCard({ icon, iconBg, label, value, href, cta, external = false, ctaColor = 'brand', onClick }: ContactCardProps) {
+  const btnClass = ctaColor === 'purple'
     ? 'bg-purple-500/10 text-purple-400 border-purple-400/20 hover:bg-purple-500/20'
     : 'bg-brand-500/10 text-brand-400 border-brand-400/20 hover:bg-brand-500/20';
 
   return (
-    <GlassCard className="p-5 flex items-center justify-between gap-4 glass-hover max-w-lg text-left">
-      <div className="flex items-center gap-4 min-w-0">
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-          style={{ background: iconBg }}
+    <GlassCard className="p-5 glass-hover h-full">
+      <div className="flex flex-col gap-4 h-full">
+        {/* Icon + label row */}
+        <div className="flex items-center gap-3">
+          <div
+            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+            style={{ background: iconBg }}
+          >
+            {icon}
+          </div>
+          <div className="min-w-0">
+            <p className="text-gray-500 font-mono text-xs uppercase tracking-wider">{label}</p>
+            <p className="text-white text-sm font-medium truncate">{value}</p>
+          </div>
+        </div>
+        {/* CTA button — full width at bottom */}
+        <a
+          href={href}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
+          onClick={onClick}
+          className={`mt-auto w-full text-center px-4 py-2.5 rounded-lg text-xs font-semibold border transition-all ${btnClass}`}
         >
-          {icon}
-        </div>
-        <div className="min-w-0">
-          <p className="text-gray-500 font-mono text-xs">{label}</p>
-          <p className="text-white text-sm font-medium truncate">{value}</p>
-        </div>
+          {cta}
+        </a>
       </div>
-      <a
-        href={href}
-        target={external ? '_blank' : undefined}
-        rel={external ? 'noopener noreferrer' : undefined}
-        onClick={onClick}
-        className={`px-4 py-2 rounded-lg text-xs font-semibold border transition-all shrink-0 ${btnClass}`}
-      >
-        {cta}
-      </a>
     </GlassCard>
   );
 }
@@ -67,18 +70,18 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <FadeInView>
-        <div className="mb-8">
-          <span className="text-brand-400 font-mono text-sm block mb-2">07 / contact</span>
-          <h2 className="text-3xl font-semibold text-white">Let's build something.</h2>
-          <p className="text-gray-400 mt-2">Open to backend engineering roles and interesting problems.</p>
+        <div className="mb-12">
+          <span className="section-label">07 / contact</span>
+          <h2 className="section-title text-white">Let's build something.</h2>
+          <p className="section-subtitle">Open to backend engineering roles and interesting problems.</p>
         </div>
       </FadeInView>
 
-      <div className="w-full space-y-6">
-        {/* Contact rows */}
-        <div className="grid md:grid-cols-3 gap-6">
+      <div className="space-y-8">
+        {/* Contact cards row */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <FadeInView delay={0.08}>
-            <ContactRow
+            <ContactCard
               icon={<Mail size={18} className="text-brand-400" />}
               iconBg="rgba(0,229,173,0.1)"
               label="email"
@@ -90,7 +93,7 @@ export function Contact() {
           </FadeInView>
 
           <FadeInView delay={0.13}>
-            <ContactRow
+            <ContactCard
               icon={<span className="text-brand-400"><GithubIcon /></span>}
               iconBg="rgba(0,229,173,0.1)"
               label="github"
@@ -103,7 +106,7 @@ export function Contact() {
           </FadeInView>
 
           <FadeInView delay={0.18}>
-            <ContactRow
+            <ContactCard
               icon={<span className="text-purple-400"><LinkedinIcon /></span>}
               iconBg="rgba(139,92,246,0.1)"
               label="linkedin"
@@ -117,25 +120,30 @@ export function Contact() {
           </FadeInView>
         </div>
 
-        {/* Resume download */}
+        {/* Resume CTA */}
         <FadeInView delay={0.23}>
-          <a
-            href={profile.resumeUrl}
-            download
-            onClick={() => trackEvent('resume_download', { source: 'contact' })}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-brand-500 to-purple-500 text-white hover:opacity-90 transition-all hover:shadow-glow-md"
-          >
-            <Download size={15} />
-            Download Resume (PDF)
-          </a>
+          <div className="flex">
+            <a
+              href={profile.resumeUrl}
+              download
+              onClick={() => trackEvent('resume_download', { source: 'contact' })}
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-brand-500 to-purple-500 text-white hover:opacity-90 transition-all hover:shadow-glow-md"
+            >
+              <Download size={15} />
+              Download Resume (PDF)
+            </a>
+          </div>
         </FadeInView>
       </div>
 
       {/* Footer */}
       <FadeInView delay={0.3}>
-        <div className="mt-20 pt-8 border-t border-white/5">
+        <div className="mt-24 pt-8 border-t border-white/5 flex items-center justify-between flex-wrap gap-4">
           <p className="text-xs font-mono text-gray-500">
             built with React · Three.js · Framer Motion · Tailwind · deployed on Vercel
+          </p>
+          <p className="text-xs font-mono text-gray-600">
+            © {new Date().getFullYear()} Bharanidharan
           </p>
         </div>
       </FadeInView>

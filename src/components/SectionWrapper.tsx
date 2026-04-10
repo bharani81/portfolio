@@ -8,12 +8,12 @@ interface SectionWrapperProps {
 
 /**
  * Consistent section wrapper: full-width outer <section> for bg effects,
- * constrained inner container (max-w-6xl) for content.
+ * constrained inner container (max-w-7xl) for content — matches Navbar.
  */
 export function SectionWrapper({ id, children, className = '' }: SectionWrapperProps) {
   return (
-    <section id={id} className={`relative py-20 ${className}`}>
-      <div className="w-full max-w-6xl mx-auto px-6">
+    <section id={id} className={`relative py-24 ${className}`}>
+      <div className="layout-container">
         {children}
       </div>
     </section>

@@ -25,15 +25,15 @@ export function Skills() {
   return (
     <SectionWrapper id="skills">
       <FadeInView>
-        <div className="mb-8">
-          <span className="text-brand-400 font-mono text-sm block mb-2">05 / skills</span>
-          <h2 className="text-3xl font-semibold text-white">The tools — organized as systems.</h2>
-          <p className="text-gray-400 mt-2">Not just buzzwords — grouped by real-world system categories</p>
+        <div className="mb-12">
+          <span className="section-label">05 / skills</span>
+          <h2 className="section-title text-white">The tools — organized as systems.</h2>
+          <p className="section-subtitle">Not just buzzwords — grouped by real-world system categories</p>
         </div>
       </FadeInView>
 
-      <div className="w-full space-y-6">
-        {/* Category tabs */}
+      <div className="space-y-8">
+        {/* Category tab strip */}
         <div className="flex flex-wrap gap-2">
           {skills.map(cat => {
             const Icon = ICON_MAP[cat.icon] ?? Terminal;
@@ -43,10 +43,11 @@ export function Skills() {
               <button
                 key={cat.category}
                 onClick={() => setActiveCategory(cat.category)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border"
-                style={isActive
-                  ? { background: color.bg, borderColor: color.border, color: color.text }
-                  : { background: 'transparent', borderColor: 'rgba(255,255,255,0.08)', color: '#64748b' }
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border"
+                style={
+                  isActive
+                    ? { background: color.bg, borderColor: color.border, color: color.text }
+                    : { background: 'transparent', borderColor: 'rgba(255,255,255,0.08)', color: '#64748b' }
                 }
               >
                 <Icon size={13} />
@@ -56,7 +57,7 @@ export function Skills() {
           })}
         </div>
 
-        {/* Active category */}
+        {/* Active category panel */}
         {active && (
           <motion.div
             key={activeCategory}
@@ -65,20 +66,20 @@ export function Skills() {
             transition={{ duration: 0.2 }}
             className="space-y-6"
           >
-            <p className="text-gray-400 max-w-lg text-left">{active.description}</p>
+            <p className="text-body">{active.description}</p>
 
-            {/* skill grid */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {/* Skill grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {active.items.map((item, i) => {
                 const color = COLOR_MAP[active.color as ColorKey] ?? COLOR_MAP.brand;
                 return (
                   <FadeInView key={item.name} delay={i * 0.04}>
-                    <GlassCard className="p-4 text-left">
-                      <div className="flex items-center justify-between mb-2.5">
+                    <GlassCard className="p-4">
+                      <div className="flex items-center justify-between mb-3">
                         <span className="text-white font-semibold text-sm">{item.name}</span>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 shrink-0">
                           <span className="text-xs font-mono text-gray-500">{item.years}y</span>
-                          <span className="text-xs font-bold" style={{ color: color.text }}>{item.level}%</span>
+                          <span className="text-xs font-bold font-mono" style={{ color: color.text }}>{item.level}%</span>
                         </div>
                       </div>
                       {/* Progress bar */}

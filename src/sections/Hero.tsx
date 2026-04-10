@@ -33,7 +33,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden py-20">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Backgrounds */}
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
       <div
@@ -41,11 +41,11 @@ export function Hero() {
         style={{ background: 'radial-gradient(ellipse 70% 60% at 65% 40%, rgba(0,229,173,0.06) 0%, transparent 70%)' }}
       />
 
-      <div className="w-full max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+      <div className="layout-container py-24 pt-32">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
           {/* ── Left: Text ── */}
-          <div className="max-w-xl space-y-6 text-left">
+          <div className="space-y-6">
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
-              className="text-5xl md:text-6xl font-bold text-white tracking-tight"
+              className="text-hero text-white"
             >
               {profile.name}
             </motion.h1>
@@ -68,16 +68,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.32 }}
-              className="text-gray-400 max-w-lg text-lg"
-            >
-              {profile.tagline}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.42 }}
-              className="text-gray-400 max-w-lg"
+              className="text-body max-w-lg"
             >
               {profile.bio}
             </motion.p>
@@ -96,13 +87,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.58 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap items-center gap-3 pt-2"
             >
               <a
                 href={profile.resumeUrl}
                 download
                 onClick={() => trackEvent('resume_download', { source: 'hero' })}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm bg-brand-500 text-dark-900 hover:bg-brand-400 transition-all hover:shadow-glow-md"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm bg-brand-500 text-dark-900 hover:bg-brand-400 transition-all hover:shadow-glow-md"
               >
                 <Download size={14} /> Download Resume
               </a>
@@ -110,7 +101,7 @@ export function Hero() {
                 href={profile.socials.github}
                 target="_blank" rel="noopener noreferrer"
                 onClick={() => trackEvent('social_click', { platform: 'github', source: 'hero' })}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm glass border border-white/10 text-slate-300 hover:text-brand-400 hover:border-brand-400/30 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm glass border border-white/10 text-slate-300 hover:text-brand-400 hover:border-brand-400/30 transition-all"
               >
                 <GithubIcon /> GitHub
               </a>
@@ -118,7 +109,7 @@ export function Hero() {
                 href={profile.socials.linkedin}
                 target="_blank" rel="noopener noreferrer"
                 onClick={() => trackEvent('social_click', { platform: 'linkedin', source: 'hero' })}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm glass border border-white/10 text-slate-300 hover:text-brand-400 hover:border-brand-400/30 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm glass border border-white/10 text-slate-300 hover:text-brand-400 hover:border-brand-400/30 transition-all"
               >
                 <LinkedinIcon /> LinkedIn
               </a>
@@ -129,7 +120,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-500/10 border border-brand-400/20 text-brand-400 text-xs font-mono self-start"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-500/10 border border-brand-400/20 text-brand-400 text-xs font-mono"
               >
                 ✓ {simCount} request{simCount > 1 ? 's' : ''} simulated
               </motion.div>
@@ -137,7 +128,7 @@ export function Hero() {
           </div>
 
           {/* ── Right: 3D Canvas ── */}
-          <div className="relative h-[320px] lg:h-[400px] w-full order-first lg:order-last">
+          <div className="relative h-[360px] lg:h-[480px] w-full order-first lg:order-last">
             {show3D ? (
               <ErrorBoundary
                 fallback={
@@ -157,15 +148,15 @@ export function Hero() {
                 </Suspense>
               </ErrorBoundary>
             ) : (
-              <div className="h-full glass rounded-xl border border-white/10 flex flex-col items-center justify-center gap-5 p-8 relative overflow-hidden text-center">
+              <div className="h-full glass rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-6 p-10 relative overflow-hidden text-center">
                 <div
-                  className="absolute inset-0 opacity-20"
+                  className="absolute inset-0 opacity-20 pointer-events-none"
                   style={{ background: 'radial-gradient(ellipse at center, rgba(0,229,173,0.3) 0%, transparent 70%)' }}
                 />
-                <div className="text-5xl">⚡</div>
+                <div className="text-6xl">⚡</div>
                 <div>
-                  <p className="text-brand-400 font-mono text-sm">Backend Systems</p>
-                  <p className="text-gray-400 text-xs mt-1">APIs · Queues · Microservices</p>
+                  <p className="text-brand-400 font-mono text-sm font-semibold">Backend Systems</p>
+                  <p className="text-gray-400 text-xs mt-1.5 font-mono">APIs · Queues · Microservices</p>
                 </div>
                 <div className="flex gap-2 flex-wrap justify-center">
                   {['Golang', 'AWS', 'Redis', 'PostgreSQL'].map(t => (
@@ -179,11 +170,11 @@ export function Hero() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="flex flex-col items-center mt-12 text-slate-600"
+          className="flex flex-col items-center gap-1 mt-16 text-slate-600"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-xs font-mono mb-1">scroll</span>
+          <span className="text-xs font-mono tracking-widest">scroll</span>
           <ChevronDown size={16} />
         </motion.div>
       </div>
