@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
 
 export function ScrollProgress() {

@@ -1,4 +1,4 @@
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@context/ThemeContext';
 import { ErrorBoundary } from '@components/ErrorBoundary';

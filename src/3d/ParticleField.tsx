@@ -13,11 +13,13 @@ export function ParticleField({ count = 1500 }: ParticleFieldProps) {
     const pos = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
+      /* eslint-disable react-hooks/purity */
       pos[i * 3]     = (Math.random() - 0.5) * 15;
       pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 8;
       vel[i * 3]     = (Math.random() - 0.5) * 0.002;
       vel[i * 3 + 1] = (Math.random() - 0.5) * 0.002;
+      /* eslint-enable react-hooks/purity */
       vel[i * 3 + 2] = 0;
     }
     return { positions: pos, velocities: vel };

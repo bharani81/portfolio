@@ -101,12 +101,12 @@ export function BackendSystemViz({ onSimulate }: { onSimulate?: () => void }) {
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [packets, setPackets] = useState<PacketState[]>([]);
   const packetsRef = useRef(packets);
-  packetsRef.current = packets;
 
   const nodeMap = useMemo(() => Object.fromEntries(NODES.map(n => [n.id, n])), []);
 
   // Animate packets
   useFrame((_, delta) => {
+    packetsRef.current = packets;
     setPackets(prev =>
       prev
         .map(p => ({ ...p, t: p.t + delta * 0.8 }))
