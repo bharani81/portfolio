@@ -1,19 +1,161 @@
 {
   "highlights": [
-    { "label": "Production Systems Built", "value": "3",   "detail": "PicSee backend, Shopup test infra, Q&A Forum" },
-    { "label": "REST APIs Shipped",        "value": "20+", "detail": "Golang Gin, PostgreSQL-backed endpoints" },
-    { "label": "Test Execution Speedup",   "value": "92%", "detail": "Katalon → Cypress migration at Shopup" },
-    { "label": "Dashboards Delivered",     "value": "100+","detail": "Metabase + AWS Athena analytics suite" }
+    {
+      "label": "Production Systems Built",
+      "value": "3",
+      "detail": "PicSee backend, Shopup test infra, Q&A Forum"
+    },
+    {
+      "label": "REST APIs Shipped",
+      "value": "500+",
+      "detail": "Golang Gin, PostgreSQL-backed endpoints"
+    },
+    {
+      "label": "Resilient Email & Notifications System",
+      "value": "65%+",
+      "detail": "Increased User Retention for picsee"
+    },
+    {
+      "label": "Dashboards Delivered",
+      "value": "100+",
+      "detail": "Metabase + AWS Athena analytics suite"
+    }
   ],
   "contributions": [
-    {"week":1,"count":3},{"week":2,"count":5},{"week":3,"count":2},{"week":4,"count":7},
-    {"week":5,"count":4},{"week":6,"count":8},{"week":7,"count":6},{"week":8,"count":9},
-    {"week":9,"count":3},{"week":10,"count":5},{"week":11,"count":11},{"week":12,"count":7},
-    {"week":13,"count":4},{"week":14,"count":6},{"week":15,"count":8},{"week":16,"count":5},
-    {"week":17,"count":9},{"week":18,"count":12},{"week":19,"count":7},{"week":20,"count":4},
-    {"week":21,"count":6},{"week":22,"count":10},{"week":23,"count":8},{"week":24,"count":5},
-    {"week":25,"count":3},{"week":26,"count":7},{"week":27,"count":9},{"week":28,"count":6},
-    {"week":29,"count":11},{"week":30,"count":8},{"week":31,"count":5},{"week":32,"count":7}
+    {
+      "week": 1,
+      "count": 3
+    },
+    {
+      "week": 2,
+      "count": 5
+    },
+    {
+      "week": 3,
+      "count": 2
+    },
+    {
+      "week": 4,
+      "count": 7
+    },
+    {
+      "week": 5,
+      "count": 4
+    },
+    {
+      "week": 6,
+      "count": 8
+    },
+    {
+      "week": 7,
+      "count": 6
+    },
+    {
+      "week": 8,
+      "count": 9
+    },
+    {
+      "week": 9,
+      "count": 3
+    },
+    {
+      "week": 10,
+      "count": 5
+    },
+    {
+      "week": 11,
+      "count": 11
+    },
+    {
+      "week": 12,
+      "count": 7
+    },
+    {
+      "week": 13,
+      "count": 4
+    },
+    {
+      "week": 14,
+      "count": 6
+    },
+    {
+      "week": 15,
+      "count": 8
+    },
+    {
+      "week": 16,
+      "count": 5
+    },
+    {
+      "week": 17,
+      "count": 9
+    },
+    {
+      "week": 18,
+      "count": 12
+    },
+    {
+      "week": 19,
+      "count": 7
+    },
+    {
+      "week": 20,
+      "count": 4
+    },
+    {
+      "week": 21,
+      "count": 6
+    },
+    {
+      "week": 22,
+      "count": 10
+    },
+    {
+      "week": 23,
+      "count": 8
+    },
+    {
+      "week": 24,
+      "count": 5
+    },
+    {
+      "week": 25,
+      "count": 3
+    },
+    {
+      "week": 26,
+      "count": 7
+    },
+    {
+      "week": 27,
+      "count": 9
+    },
+    {
+      "week": 28,
+      "count": 6
+    },
+    {
+      "week": 29,
+      "count": 11
+    },
+    {
+      "week": 30,
+      "count": 8
+    },
+    {
+      "week": 31,
+      "count": 5
+    },
+    {
+      "week": 32,
+      "count": 7
+    }
   ],
-  "technologies": ["Golang", "PostgreSQL", "Redis", "AWS", "Docker"]
+  "technologies": [
+    "Golang",
+    "PostgreSQL",
+    "Redis",
+    "AWS",
+    "Docker"
+  ]
 }
