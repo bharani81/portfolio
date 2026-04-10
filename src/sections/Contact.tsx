@@ -29,24 +29,23 @@ interface ContactCardProps {
 }
 
 function ContactCard({ icon, iconBg, label, value, href, cta, external = false, ctaColor = 'brand', onClick }: ContactCardProps) {
-  const btnClass = ctaColor === 'purple'
-    ? 'bg-purple-500/10 text-purple-400 border-purple-400/20 hover:bg-purple-500/20'
-    : 'bg-brand-500/10 text-brand-400 border-brand-400/20 hover:bg-brand-500/20';
+  const btnStyle = ctaColor === 'purple'
+    ? { background: 'rgba(139,92,246,0.1)', color: '#a78bfa', borderColor: 'rgba(139,92,246,0.2)' }
+    : { background: 'rgba(0,229,173,0.08)', color: '#00e5ad', borderColor: 'rgba(0,229,173,0.2)' };
 
   return (
-    <GlassCard className="p-5 glass-hover h-full">
-      <div className="flex flex-col gap-4 h-full">
+    <GlassCard className="p-6 glass-hover h-full">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', height: '100%' }}>
         {/* Icon + label row */}
-        <div className="flex items-center gap-3">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-            style={{ background: iconBg }}
+            style={{ width: '2.75rem', height: '2.75rem', borderRadius: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: iconBg }}
           >
             {icon}
           </div>
-          <div className="min-w-0">
-            <p className="text-gray-500 font-mono text-xs uppercase tracking-wider">{label}</p>
-            <p className="text-white text-sm font-medium truncate">{value}</p>
+          <div style={{ minWidth: 0 }}>
+            <p style={{ color: '#64748b', fontFamily: 'var(--font-mono)', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.25rem' }}>{label}</p>
+            <p style={{ color: '#fff', fontSize: '0.875rem', fontWeight: 500 }} className="truncate">{value}</p>
           </div>
         </div>
         {/* CTA button — full width at bottom */}
@@ -55,7 +54,20 @@ function ContactCard({ icon, iconBg, label, value, href, cta, external = false, 
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
           onClick={onClick}
-          className={`mt-auto w-full text-center px-4 py-2.5 rounded-lg text-xs font-semibold border transition-all ${btnClass}`}
+          style={{
+            marginTop: 'auto',
+            width: '100%',
+            textAlign: 'center',
+            padding: '0.75rem 1rem',
+            borderRadius: '0.5rem',
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            border: '1px solid',
+            transition: 'all 0.2s',
+            display: 'block',
+            ...btnStyle
+          }}
+          className="hover:opacity-90"
         >
           {cta}
         </a>
@@ -70,16 +82,16 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <FadeInView>
-        <div className="mb-12">
+        <div className="section-header">
           <span className="section-label">07 / contact</span>
           <h2 className="section-title text-white">Let's build something.</h2>
           <p className="section-subtitle">Open to backend engineering roles and interesting problems.</p>
         </div>
       </FadeInView>
 
-      <div className="space-y-8">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         {/* Contact cards row */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div style={{ display: 'grid', gap: '1.5rem' }} className="sm:grid-cols-2 lg:grid-cols-3">
           <FadeInView delay={0.08}>
             <ContactCard
               icon={<Mail size={18} className="text-brand-400" />}
@@ -122,12 +134,13 @@ export function Contact() {
 
         {/* Resume CTA */}
         <FadeInView delay={0.23}>
-          <div className="flex">
+          <div style={{ display: 'flex' }}>
             <a
               href={profile.resumeUrl}
               download
               onClick={() => trackEvent('resume_download', { source: 'contact' })}
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-brand-500 to-purple-500 text-white hover:opacity-90 transition-all hover:shadow-glow-md"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.625rem', padding: '0.875rem 1.75rem', borderRadius: '0.75rem', fontWeight: 700, fontSize: '0.875rem', background: 'linear-gradient(135deg, #00e5ad, #8b5cf6)', color: '#fff', transition: 'opacity 0.2s' }}
+              className="hover:opacity-90"
             >
               <Download size={15} />
               Download Resume (PDF)
@@ -138,11 +151,11 @@ export function Contact() {
 
       {/* Footer */}
       <FadeInView delay={0.3}>
-        <div className="mt-24 pt-8 border-t border-white/5 flex items-center justify-between flex-wrap gap-4">
-          <p className="text-xs font-mono text-gray-500">
+        <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <p style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#475569' }}>
             built with React · Three.js · Framer Motion · Tailwind · deployed on Vercel
           </p>
-          <p className="text-xs font-mono text-gray-600">
+          <p style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#334155' }}>
             © {new Date().getFullYear()} Bharanidharan
           </p>
         </div>

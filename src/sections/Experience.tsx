@@ -19,7 +19,7 @@ export function Experience() {
       />
 
       <FadeInView>
-        <div className="mb-12">
+        <div className="section-header">
           <span className="section-label">02 / experience</span>
           <h2 className="section-title text-white">From intern to owning production.</h2>
           <p className="section-subtitle">Impact-driven engineering journey</p>
@@ -33,7 +33,7 @@ export function Experience() {
           style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,229,173,0.35) 10%, rgba(0,229,173,0.35) 90%, transparent)' }}
         />
 
-        <div className="space-y-8 pl-10">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', paddingLeft: '2.5rem' }}>
           {experience.map((exp, idx) => (
             <FadeInView key={exp.id} delay={idx * 0.1}>
               <div className="relative">
@@ -45,30 +45,30 @@ export function Experience() {
                   onClick={() => setExpanded(id => id === exp.id ? -1 : exp.id)}
                 >
                   {/* Header row */}
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }} className="sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <h3 className="text-h3 text-white">{exp.role}</h3>
-                      <p className="text-brand-400 font-semibold text-sm mt-0.5">{exp.company}</p>
+                      <p className="text-brand-400 font-semibold text-sm" style={{ marginTop: '0.375rem' }}>{exp.company}</p>
                     </div>
                     <span className="tech-badge w-fit shrink-0">{exp.type}</span>
                   </div>
 
                   {/* Meta */}
-                  <div className="flex flex-wrap gap-4 text-xs font-mono text-gray-500 mb-5">
-                    <span className="flex items-center gap-1.5">
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '1.5rem', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: '#64748b' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
                       <Calendar size={11} />{exp.period}
                     </span>
-                    <span className="flex items-center gap-1.5">
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
                       <MapPin size={11} />{exp.location}
                     </span>
                   </div>
 
                   {/* Impact metrics */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem', marginBottom: '1.5rem' }} className="sm:grid-cols-4">
                     {exp.impact.map(m => (
-                      <div key={m.metric} className="glass rounded-lg p-3 border border-white/5 text-center sm:text-left">
-                        <div className="text-xl font-extrabold text-white leading-none">{m.value}</div>
-                        <div className="text-xs text-gray-400 font-mono mt-1.5 leading-tight">{m.metric}</div>
+                      <div key={m.metric} className="glass rounded-lg border border-white/5 text-center sm:text-left" style={{ padding: '1rem' }}>
+                        <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{m.value}</div>
+                        <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontFamily: 'var(--font-mono)', marginTop: '0.5rem', lineHeight: 1.3 }}>{m.metric}</div>
                       </div>
                     ))}
                   </div>
@@ -80,10 +80,10 @@ export function Experience() {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <ul className="space-y-2.5 mb-5 pt-1">
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem', marginBottom: '1.5rem', paddingTop: '0.5rem' }}>
                       {exp.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-3 text-sm text-gray-400 leading-relaxed">
-                          <span className="text-brand-400 mt-0.5 shrink-0 text-xs">▹</span>
+                        <li key={i} style={{ display: 'flex', gap: '0.875rem', fontSize: '0.875rem', color: '#94a3b8', lineHeight: 1.65 }}>
+                          <span style={{ color: '#00e5ad', marginTop: '0.25rem', flexShrink: 0, fontSize: '0.7rem' }}>▹</span>
                           {h}
                         </li>
                       ))}
@@ -91,11 +91,11 @@ export function Experience() {
                   </motion.div>
 
                   {/* Footer: tech stack + expand toggle */}
-                  <div className="flex items-center justify-between gap-4 pt-3 border-t border-white/5">
-                    <div className="flex flex-wrap gap-1.5">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
                       {exp.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
                     </div>
-                    <p className="text-xs font-mono text-gray-500 shrink-0">
+                    <p style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: '#64748b', flexShrink: 0 }}>
                       {expanded === exp.id ? '▾ collapse' : '▸ expand'}
                     </p>
                   </div>

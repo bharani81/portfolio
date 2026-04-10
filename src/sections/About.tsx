@@ -9,7 +9,7 @@ export function About() {
   return (
     <SectionWrapper id="about">
       <FadeInView>
-        <div className="mb-12">
+        <div className="section-header">
           <span className="section-label">01 / about</span>
           <h2 className="section-title text-white">CS foundation → relentless builder.</h2>
           <p className="section-subtitle">The story behind the engineer</p>
@@ -19,7 +19,7 @@ export function About() {
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Bio text */}
         <FadeInView delay={0.1}>
-          <div className="space-y-5 text-body">
+          <div className="text-body" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <p>
               Hey there. I'm a backend engineer with a degree in Computer Science and Engineering.
               I don't just write code — I design systems that solve real business problems, scale
@@ -50,13 +50,13 @@ export function About() {
               <span className="text-xs font-mono text-slate-500 ml-2">~/about.sh</span>
             </div>
             {/* Terminal body */}
-            <div className="p-6 font-mono text-sm leading-relaxed">
+            <div className="p-8 font-mono text-sm leading-loose">
               <div className="flex gap-2 text-gray-400">
                 <span className="text-brand-400 select-none">$</span>
                 <span className="text-white">cat profile.json</span>
               </div>
-              <div className="mt-3 text-brand-300">{'{'}</div>
-              <div className="pl-5 space-y-1.5 mt-1">
+              <div className="mt-4 text-brand-300">{'{'}</div>
+              <div className="pl-5 mt-2" style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                 <div className="text-gray-300">
                   <span className="text-purple-400">"role"</span>:{' '}
                   <span className="text-amber-300">"Backend Engineer"</span>,

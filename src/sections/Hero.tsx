@@ -45,7 +45,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* ── Left: Text ── */}
-          <div className="space-y-6">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <motion.span
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,6 +60,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
               className="text-hero text-white"
+              style={{ marginTop: '-0.5rem' }} // visually tighten label→name only
             >
               {profile.name}
             </motion.h1>
@@ -68,7 +69,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.32 }}
-              className="text-body max-w-lg"
+              className="text-body"
+              style={{ maxWidth: '36rem' }}
             >
               {profile.bio}
             </motion.p>
@@ -87,7 +89,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.58 }}
-              className="flex flex-wrap items-center gap-3 pt-2"
+              style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem', paddingTop: '0.5rem' }}
             >
               <a
                 href={profile.resumeUrl}

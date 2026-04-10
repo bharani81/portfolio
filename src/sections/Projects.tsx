@@ -27,14 +27,14 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <FadeInView>
-        <div className="mb-12">
+        <div className="section-header">
           <span className="section-label">04 / projects</span>
           <h2 className="section-title text-white">Proof: code that ships and scales.</h2>
           <p className="section-subtitle">Click any card to read the full case study</p>
         </div>
       </FadeInView>
 
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div style={{ display: 'grid', gap: '2rem' }} className="md:grid-cols-2 xl:grid-cols-3">
         {projects.map((project, idx) => (
           <FadeInView
             key={project.id}
@@ -42,14 +42,14 @@ export function Projects() {
             className="flex"
           >
             <GlassCard
-              className="p-6 flex flex-col group cursor-pointer w-full"
+              className="p-7 flex flex-col group cursor-pointer w-full"
               onClick={() => openModal(project)}
             >
               {/* Top */}
-              <div className="flex items-start justify-between gap-3 mb-3">
-                <div className="min-w-0 flex-1">
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div style={{ minWidth: 0, flex: 1 }}>
                   {project.featured && (
-                    <span className="text-amber-400 text-xs font-mono block mb-1">★ featured</span>
+                    <span style={{ color: '#fbbf24', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', display: 'block', marginBottom: '0.375rem' }}>★ featured</span>
                   )}
                   <h3 className="text-h3 text-white group-hover:text-brand-400 transition-colors leading-snug">
                     {project.title}
@@ -59,16 +59,16 @@ export function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-body text-sm flex-1 mb-4">{project.description}</p>
+              <p className="text-body text-sm flex-1" style={{ marginBottom: '1.25rem' }}>{project.description}</p>
 
               {/* Tech stack */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginBottom: '1.25rem' }}>
                 {project.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-auto">
-                <div className="flex gap-3 items-center">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: 'auto' }}>
+                <div style={{ display: 'flex', gap: '0.875rem', alignItems: 'center' }}>
                   {project.github && (
                     <a
                       href={project.github}
@@ -92,7 +92,7 @@ export function Projects() {
                     </a>
                   )}
                 </div>
-                <span className="text-xs font-mono flex items-center gap-1 text-gray-500 group-hover:text-brand-400 transition-colors">
+                <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#64748b' }} className="group-hover:text-brand-400 transition-colors">
                   case study <ArrowRight size={10} />
                 </span>
               </div>

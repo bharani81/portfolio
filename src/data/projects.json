@@ -4,7 +4,13 @@
     "title": "Q&A Forum",
     "tagline": "Full-stack discussion platform with CI/CD from day one",
     "description": "A production-ready Q&A forum built with Golang, PostgreSQL, and React. Designed for scalability with a focus on clean API design and a smooth developer experience.",
-    "tech": ["Golang", "PostgreSQL", "React", "Docker", "GitHub Actions"],
+    "tech": [
+      "Golang",
+      "PostgreSQL",
+      "React",
+      "Docker",
+      "GitHub Actions"
+    ],
     "github": "https://github.com/bharanidharan-s/qa-forum",
     "live": null,
     "featured": true,
@@ -38,6 +44,97 @@
         "Full-text search with pgvector or Elasticsearch"
       ],
       "impact": "Demonstrates ability to own the full engineering lifecycle: design, implement, test, containerise, and deploy."
+    }
+  },
+  {
+    "id": 2,
+    "title": "Personal Portfolio Website",
+    "tagline": "Minimal, performance-focused developer portfolio",
+    "description": "A modern personal portfolio website showcasing projects, case studies, and engineering depth. Built with a focus on clean UI, responsive design, and fast load performance.",
+    "tech": [
+      "React",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/bharani81/portfolio",
+    "live": null,
+    "featured": false,
+    "category": "Frontend",
+    "caseStudy": {
+      "problem": "Needed a portfolio that not only displays projects but clearly communicates engineering thinking, system design skills, and attention to UI/UX.",
+      "solution": "Built a clean, component-driven React application with structured project case studies, consistent design system, and optimized layout for readability and performance.",
+      "challenges": [
+        {
+          "title": "UI alignment and spacing consistency",
+          "how": "Implemented a consistent layout system using Tailwind (max-width containers, spacing scale, and grid/flex patterns) to ensure visual balance"
+        },
+        {
+          "title": "Content structuring",
+          "how": "Designed reusable data-driven components to render projects dynamically from JSON, enabling easy scalability and updates"
+        }
+      ],
+      "architecture": [
+        "React SPA with component-based architecture",
+        "Data-driven UI rendering via structured JSON",
+        "Tailwind CSS for design system consistency"
+      ],
+      "scalingDecisions": [
+        "Reusable components for sections and project cards",
+        "Separation of content (JSON) and presentation (UI)",
+        "Optimized asset loading and minimal dependencies"
+      ],
+      "futureImprovements": [
+        "Add blog section for technical writing",
+        "Introduce animations for better user engagement",
+        "SSR/SSG using Next.js for improved SEO"
+      ],
+      "impact": "Effectively communicates both frontend craftsmanship and backend/system design depth in a single cohesive interface."
+    }
+  },
+  {
+    "id": 3,
+    "title": "Go API Gateway",
+    "tagline": "High-performance gateway with adaptive load balancing",
+    "description": "A high-performance API Gateway built in Golang featuring custom routing, distributed resilience patterns, and intelligent load balancing under high concurrency.",
+    "tech": [
+      "Golang",
+      "Redis",
+      "JWT",
+      "Docker"
+    ],
+    "github": "https://github.com/bharani81/go-gateway",
+    "live": null,
+    "featured": true,
+    "category": "Backend",
+    "caseStudy": {
+      "problem": "Needed to design a scalable and resilient gateway capable of handling high request throughput while maintaining low latency and fault tolerance.",
+      "solution": "Built a custom API Gateway using goroutines and channels with a Radix-Trie router, integrated rate limiting, authentication, circuit breakers, and adaptive load balancing.",
+      "challenges": [
+        {
+          "title": "High concurrency handling",
+          "how": "Leveraged goroutines and channels to efficiently process concurrent requests while maintaining sub-50ms latency under stress"
+        },
+        {
+          "title": "Fault tolerance under failures",
+          "how": "Implemented circuit breakers, exponential backoff retries, and health-based routing to prevent cascading failures"
+        }
+      ],
+      "architecture": [
+        "Client → API Gateway (Go) → Downstream services",
+        "Radix-Trie based routing for efficient path matching",
+        "Redis-backed distributed rate limiting"
+      ],
+      "scalingDecisions": [
+        "Sliding window rate limiter using Redis + Lua for atomic operations",
+        "Stateless gateway design for horizontal scaling",
+        "Adaptive load balancing inspired by Multi-Armed Bandit algorithms"
+      ],
+      "futureImprovements": [
+        "gRPC support for internal services",
+        "Observability with Prometheus and Grafana",
+        "Dynamic config updates without restart"
+      ],
+      "impact": "Demonstrates strong backend engineering skills in concurrency, distributed systems, and real-world resilience patterns."
     }
   }
 ]

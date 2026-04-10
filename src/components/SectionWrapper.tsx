@@ -12,7 +12,11 @@ interface SectionWrapperProps {
  */
 export function SectionWrapper({ id, children, className = '' }: SectionWrapperProps) {
   return (
-    <section id={id} className={`relative py-24 ${className}`}>
+    <section
+      id={id}
+      className={`relative ${className}`}
+      style={{ paddingTop: '6rem', paddingBottom: '6rem' }}  /* 96px = 8px × 12 */
+    >
       <div className="layout-container">
         {children}
       </div>
